@@ -3,7 +3,5 @@
 	"description": "GNOME Shell extension",
 	"uuid": "gnome-extension-template@exposedcat",
 	"settings-schema": "org.gnome.shell.extensions.extension",
-	"shell-version": [
-		"47"
-	]
+	"shell-version": ["47"]
 }

@@ -1,7 +1,7 @@
-import { ExtensionPreferences } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
-import Gtk from 'gi://Gtk';
-import Gio from 'gi://Gio';
-import Adw from 'gi://Adw';
+import type Adw from "gi://Adw";
+import Gio from "gi://Gio";
+import Gtk from "gi://Gtk";
+import { ExtensionPreferences } from "resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js";
 
 export type SettingsWindow = Adw.PreferencesWindow & {
 	_settings: Gio.Settings;
@@ -22,7 +22,7 @@ export default class PreferencesManager extends ExtensionPreferences {
 	}
 
 	bindStringRow(settings: Gio.Settings, row: Adw.EntryRow, key: string) {
-		settings.bind(key, row, 'text', Gio.SettingsBindFlags.DEFAULT);
+		settings.bind(key, row, "text", Gio.SettingsBindFlags.DEFAULT);
 	}
 
 	bindNumberRow(args: BuildNumberRowArgs) {
@@ -33,7 +33,7 @@ export default class PreferencesManager extends ExtensionPreferences {
 			step_increment: range[2],
 		});
 		row.value = settings.get_int(key);
-		row.connect('notify::value', spin => {
+		row.connect("notify::value", (spin) => {
 			const newValue = spin.get_value();
 			settings.set_int(key, newValue);
 			if (maxKey) {
