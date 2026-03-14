@@ -1,7 +1,10 @@
 import type Adw from "gi://Adw";
 import Gio from "gi://Gio";
 import Gtk from "gi://Gtk";
-import { ExtensionPreferences } from "resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js";
+import {
+	ExtensionPreferences,
+	gettext as _,
+} from "resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js";
 
 export type SettingsWindow = Adw.PreferencesWindow & {
 	_settings: Gio.Settings;
@@ -18,6 +21,7 @@ export type BuildNumberRowArgs = {
 
 export default class PreferencesManager extends ExtensionPreferences {
 	fillPreferencesWindow(window: SettingsWindow) {
+		console.log(_("Test Label"));
 		window._settings = this.getSettings();
 	}
 
